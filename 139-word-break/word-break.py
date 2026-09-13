@@ -7,5 +7,6 @@ class Solution:
             for j in range(i):
                 if s[j:i] in wordDict and dp[j]:
                     dp[i] = True
+                    break
         return dp[n]
         
