@@ -1,23 +1,16 @@
 class Solution:
     def intToRoman(self, num: int) -> str:
-        # Creating Dictionary for Lookup
-        num_map = {
-            1: "I",
-            5: "V",    4: "IV",
-            10: "X",   9: "IX",
-            50: "L",   40: "XL",
-            100: "C",  90: "XC",
-            500: "D",  400: "CD",
-            1000: "M", 900: "CM",
-        }
-        
-        # Result Variable
-        r = ''
-        
-        
-        for n in [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]:
-            # If n in list then add the roman value to result variable
-            while n <= num:
-                r += num_map[n]
-                num-=n
-        return r
+        thousands = ["", "M", "MM", "MMM"]
+        hundreds = ["", "C", "CC", "CCC", "CD", "D",
+                    "DC", "DCC", "DCCC", "CM"]
+        tens = ["", "X", "XX", "XXX", "XL", "L",
+                "LX", "LXX", "LXXX", "XC"]
+        ones = ["", "I", "II", "III", "IV", "V",
+                "VI", "VII", "VIII", "IX"]
+
+        return (
+            thousands[num // 1000] +
+            hundreds[num % 1000 // 100] +
+            tens[num % 100 // 10] +
+            ones[num % 10]
+        )
