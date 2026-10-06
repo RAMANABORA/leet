@@ -1,21 +1,27 @@
 class Solution:
     def reverse(self, x: int) -> int:
-        n = abs(x)
-        res = 0
-        while n>0:
-            di = n%10
-            res = res*10+di
-            n = n//10
-        if x<0:
-            res = -res
-        if res < -2**31 or res > 2**31 - 1:
-            return 0
-        return res
+        r=0
+        if(x<0):
+            x=abs(x)
+            while(x>0):
+                d=x%10
+                r=r*10+d
+                x=x//10
+            if(r>(2**31-1)):
+                return 0
+            else:
+                return r*-1
+        else:
+            while(x>0):
+                d=x%10
+                r=r*10+d
+                x=x//10
+            print(r)
+            if(r>(2**31-1)):
+                return 0
+            else:
+                return r
+            
         
-
-        
-
-
-
 
         
