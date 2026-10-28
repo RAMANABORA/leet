@@ -1,14 +1,11 @@
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        c = 0
-        cs = 0
-        mpp = {0: 1}
+        c = 0 
+        ps = 0
+        seen = {0:1}
         for i in range(len(nums)):
-            c += nums[i]
-            if c - k in mpp:
-                cs += mpp[c - k]
-            if c in mpp:
-                mpp[c] += 1
-            else:
-                mpp[c] = 1
-        return cs
+            ps+=nums[i]
+            if ps - k in seen:
+                c+=seen[ps-k]
+            seen[ps] = seen.get(ps,0)+1
+        return c
